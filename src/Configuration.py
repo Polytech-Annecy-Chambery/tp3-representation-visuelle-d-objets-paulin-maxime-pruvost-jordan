@@ -173,8 +173,9 @@ class Configuration:
  
             # Processes the event
             
-            # Quit pygame (compatibility with pygame1.9.6 and 2.0.0)
-            if self.event.type == pygame.QUIT or (self.event.type == pygame.WINDOWEVENT and pygame.event.wait(100).type == pygame.QUIT):
+            # Quit pygame (compatibility with pygame1.9.6 and 2.0.0) 
+            # ERROR since WINDOWEVENT doesnt exist, removing it 
+            if self.event.type == pygame.QUIT or (pygame.event.wait(100).type == pygame.QUIT):
                 pygame.quit()
                 break  
 
