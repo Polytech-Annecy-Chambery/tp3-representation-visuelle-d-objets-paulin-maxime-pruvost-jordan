@@ -52,11 +52,23 @@ class Section:
 
     # Defines the vertices and faces 
     def generate(self):
-        self.vertices = [ 
-                # Définir ici les sommets
+        self.vertices = [
+                [0, 0, 0 ],
+                [self.parameters['width'],0,0],
+                [0,self.parameters['thickness'],0],
+                [0, 0, self.parameters['height']],  
+                [self.parameters['width'], self.parameters['thickness'], 0],            
+                [self.parameters['width'], 0, self.parameters['height']],
+                [0,self.parameters['thickness'],self.parameters['height']],
+                [self.parameters['width'],self.parameters['thickness'],self.parameters['height']]
                 ]
         self.faces = [
-                # définir ici les faces
+                [0,2,6,3],
+                [0,1,5,3],
+                [0,1,4,2],
+                [1,4,7,5],
+                [2,4,7,6],
+                [3,5,7,6]
                 ]   
 
     # Checks if the opening can be created for the object x
@@ -71,11 +83,24 @@ class Section:
         
     # Draws the edges
     def drawEdges(self):
-        # A compléter en remplaçant pass par votre code
-        pass           
+        gl.glPolygonMode(gl.GL_FRONT_AND_BACK,gl.GL_LINE) # on trace les faces : GL_FILL
+        gl.glBegin(gl.GL_QUADS) # Tracé d’un quadrilatère
+        gl.glColor3fv([0.5*0.05, 0.5*0.05, 0.5*0.05]) # Couleur plus foncée
+        gl.glVertex3fv([0, 0, 0])
+        gl.glVertex3fv([self.parameters['width'], 0, 0])
+        gl.glVertex3fv([self.parameters['width'], 0, self.parameters['height']])
+        gl.glVertex3fv([0, 0, self.parameters['height']])
+        gl.glEnd()            
                     
     # Draws the faces
     def draw(self):
-        # A compléter en remplaçant pass par votre code
-        pass
+        self.drawEdges()
+        gl.glPolygonMode(gl.GL_FRONT_AND_BACK, gl.GL_FILL) # on trace les faces : GL_FILL
+        gl.glBegin(gl.GL_QUADS) # Tracé d’un quadrilatère
+        gl.glColor3fv([0.5, 0.5, 0.5]) # Couleur gris moyen
+        gl.glVertex3fv([0, 0, 0])
+        gl.glVertex3fv([self.parameters['width'], 0, 0])
+        gl.glVertex3fv([self.parameters['width'], 0, self.parameters['height']])
+        gl.glVertex3fv([0, 0, self.parameters['height']])
+        gl.glEnd() 
   
