@@ -42,7 +42,8 @@ class Wall:
                                       'height': self.parameters['height'], \
                                       'thickness': self.parameters['thickness'], \
                                       'color': self.parameters['color'],
-                                      'position': self.parameters['position']})
+                                      'position': self.parameters['position'],
+                                      'orientation': self.parameters['orientation']})
         self.objects.append(self.parentSection)
 
     # Getter
@@ -63,14 +64,21 @@ class Wall:
 
     # Adds an object
     def add(self, x):
-        # A compléter en remplaçant pass par votre code
-        pass
+        sec = self.findSection(x)
+        assert sec
+
+        sections = sec[1].createNewSections(x)
+
+        self.objects.pop(sec[0])
+        self.objects.extend(sections)
+        self.objects.append(x)
+
+        return self
 
     # Draws the faces
     #NOTE: c'est faux ? en tout cas revoir ./Section.py
     def draw(self):
         gl.glPushMatrix()
-        gl.glRotatef(self.parameters['orientation'], 0, 0, 1)
         #self.parentSection.drawEdges()
         for x in self.objects:
           x.draw()
