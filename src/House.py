@@ -41,6 +41,5 @@ class House:
             
     # Draws the house      
     def draw(self):  
-        # A compléter en remplaçant pass par votre code
         for x in self.objects:
             x.draw()
