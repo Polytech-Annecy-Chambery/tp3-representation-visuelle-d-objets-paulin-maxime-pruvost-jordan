@@ -67,11 +67,14 @@ class Wall:
         sec = self.findSection(x)
         assert sec
 
-        sections = sec[1].createNewSections(x)
+        newSec = sec[1].createNewSections(x)
 
+        sections = sec[1].createNewSections(x)
         self.objects.pop(sec[0])
-        self.objects.extend(sections)
-        self.objects.append(x)
+        self.objects.append(x) #on ajoute l'objet
+
+        for k in newSec:
+            self.objects.append(k) ##on ajoute toutes les nouvelles sections
 
         return self
 

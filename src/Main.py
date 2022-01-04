@@ -90,7 +90,7 @@ def Q5d():
     configuration = Configuration()
     wall = Wall({'position': [0, 0, 0],   'width':7, 'height':2.6, 'thickness': 0.2, 'orientation':0})
     opening1 = Opening({'position': [2, 0, 0], 'width':0.9, 'height':2.15, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
-    opening2 = Opening({'position': [4, 0, 1.2], 'width':1.25, 'height':1, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
+    opening2 = Opening({'position': [5, 0, 1.15], 'width':1.25, 'height':1, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
 
     wall.add(opening1)
     wall.add(opening2)
@@ -104,7 +104,7 @@ def Q6():
     configuration = Configuration()
     wall = Wall({'position': [0, 0, 0],   'width':7, 'height':2.6, 'thickness': 0.2, 'orientation':0})
     opening1 = Window({'position': [2, 0, 0], 'width':0.9, 'height':2.15, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
-    opening2 = Door({'position': [4, 0, 1.2], 'width':1.25, 'height':1, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
+    opening2 = Door({'position': [5, 0, 1.15], 'width':1.25, 'height':1, 'thickness':0.2, 'color': [0.7, 0.7, 0.7]})
 
     wall.add(opening1)
     wall.add(opening2)
@@ -126,7 +126,7 @@ def main():
     #configuration = Q5b()
     #configuration = Q5c1()
     #configuration = Q5c2()
-    #configuration = Q5d()
+    configuration = Q5d()
     #configuration = Q6()
     configuration.display()
 

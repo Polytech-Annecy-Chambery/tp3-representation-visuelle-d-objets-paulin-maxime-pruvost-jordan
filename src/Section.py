@@ -154,11 +154,11 @@ class Section:
         if sec1.parameters['width'] <=0: 
             sec.remove(sec1)
         if sec2.parameters['height'] <=0: 
-            sec.remove (sec2)
+            sec.remove(sec2)
         if sec3.parameters['height'] <=0: 
-            sec.remove (sec3)
+            sec.remove(sec3)
         if sec4.parameters['width'] <=0: 
-            sec.remove (sec4)
+            sec.remove(sec4)
 
         return sec
 
