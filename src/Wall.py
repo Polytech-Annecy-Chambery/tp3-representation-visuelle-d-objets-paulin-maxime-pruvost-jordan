@@ -67,10 +67,9 @@ class Wall:
         pass
 
     # Draws the faces
+    #NOTE: c'est faux ? en tout cas revoir ./Section.py
     def draw(self):
-        # A compléter en remplaçant pass par votre code
         for x in self.objects:
             x.draw()
 
-    # Displays on screen and processes events
   

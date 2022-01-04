@@ -52,24 +52,27 @@ class Section:
 
     # Defines the vertices and faces
     def generate(self):
-        self.vertices = [
-                    [0, 0, 0 ],
-                    [self.parameters['width'],0,0],
-                    [0,self.parameters['thickness'],0],
-                    [0, 0, self.parameters['height']],
-                    [self.parameters['width'], self.parameters['thickness'], 0],
-                    [self.parameters['width'], 0, self.parameters['height']],
-                    [0,self.parameters['thickness'],self.parameters['height']],
-                    [self.parameters['width'],self.parameters['thickness'],self.parameters['height']]
+        self.vertices = [ # dans le bon sens cette fois ci (important pour les tests)
+                [0,0,0], 
+                [0, 0, self.parameters['height']], 
+                [self.parameters['width'], 0, self.parameters['height']],
+                [self.parameters['width'], 0, 0],
+                
+                [0, self.parameters['thickness'], 0 ], 
+                [0, self.parameters['thickness'], self.parameters['height']], 
+                [self.parameters['width'],  self.parameters['thickness'], self.parameters['height']],
+                [self.parameters['width'],  self.parameters['thickness'], 0]
                 ]
+        
         self.faces = [
-                    [0,2,6,3],
-                    [0,1,5,3],
-                    [0,1,4,2],
-                    [1,4,7,5],
-                    [2,4,7,6],
-                    [3,5,7,6]
-                ]
+                [0, 3, 2, 1],
+                [1, 2, 6, 5],
+                [5, 6, 7, 4],
+                [0, 3, 7, 4],
+                [2, 3, 7, 6],
+                [1, 0, 4, 5]
+                ]   
+
 
     # Checks if the opening can be created for the object x
     def canCreateOpening(self, x):
@@ -83,6 +86,7 @@ class Section:
 
     # Draws the edges
     def drawEdges(self):
+        #TODO: ici y faut refaire en utilisant generate(), et self.vertices, self.faces
         gl.glPolygonMode(gl.GL_FRONT_AND_BACK,gl.GL_LINE) # on trace les faces : GL_FILL
         gl.glBegin(gl.GL_QUADS) # Tracé d’un quadrilatère
         gl.glColor3fv([0.5*0.05, 0.5*0.05, 0.5*0.05]) # Couleur plus foncée
@@ -119,6 +123,8 @@ class Section:
 
 
     # Draws the faces
+    #TODO: meme chose ici avec self.vertices
+    #NOTE je serais surement pas a l'heure demain, gl hf o7
     def draw(self):
         self.drawEdges()
         gl.glPolygonMode(gl.GL_FRONT_AND_BACK, gl.GL_FILL) # on trace les faces : GL_FILL
